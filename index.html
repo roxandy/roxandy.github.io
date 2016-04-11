@@ -1,12 +1,75 @@
+
 <!DOCTYPE html>
-<html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <meta name="google" value="notranslate">
 
-<body>
 
-<h1>Hello World</h1>
+    <title>CodePen - Basic d3.js Animated Bar Graph</title>
+    
+    
+    
+    
+    
+    <script>
+  window.console = window.console || function(t) {};
+</script>
 
-<p><strong>Hi there, I'm hosted with <em>GitHub Pages</em>.</strong></p>
+    
+    
+  </head>
 
-</body>
+  <body>
 
+    
+      <script src="graph.js"></script>
+
+    <script src='http://d3js.org/d3.v3.min.js'></script>
+
+        <script>
+      dataset = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+];
+var w = 500;
+var h = 100;
+var svg = d3.select('body').append('svg').attr('width', w).attr('height', h);
+var bars = svg.selectAll('rect').data(dataset).enter().append('rect').attr('fill', 'teal').attr('x', function (d, i) {
+    return i * (w / dataset.length);
+}).attr('y', h - 1).attr('width', 20).attr('height', 1);
+bars.transition().duration(1000).delay(100).attr('y', function (d) {
+    return h - d * 4;
+}).attr('height', function (d) {
+    return d * 4;
+});
+      //@ sourceURL=pen.js
+    </script>
+
+    
+    <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+    
+  </body>
 </html>
+ 
